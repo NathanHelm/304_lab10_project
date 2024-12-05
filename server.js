@@ -19,6 +19,7 @@ let product = require('./routes/product');
 let displayImage = require('./routes/displayImage');
 let customer = require('./routes/customer');
 let ship = require('./routes/ship');
+let removeProdShoppingCart = require('./routes/removeProdShoppingCart');
 
 const app = express();
 
@@ -85,6 +86,7 @@ app.use('/product', product);
 app.use('/displayImage', displayImage.router);
 app.use('/customer', customer);
 app.use('/ship', ship);
+app.use('/removeProdShoppingCart', removeProdShoppingCart);
 
 // Starting our Express app
 app.listen(3000)

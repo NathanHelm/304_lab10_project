@@ -25,6 +25,7 @@ router.get('/', function(req, res, next) {
 
             res.write("<td align=\"right\">$" + Number(product.price).toFixed(2) + "</td>");
             res.write("<td align=\"right\">$" + (Number(product.quantity.toFixed(2)) * Number(product.price)).toFixed(2) + "</td></tr>");
+            res.write("<td><form method=\"POST\" action=\"/removeProdShoppingCart\"><input type=\"hidden\" name=\"productId\" value=\"" + product.id + "\" /><button type=\"submit\">Remove</button></form></td>");
             res.write("</tr>");
             total = total + product.quantity * product.price;
         }
