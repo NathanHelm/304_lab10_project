@@ -15,6 +15,7 @@ router.get('/', function (req, res) {
         // HINT: Look at the /views/index.handlebars file
         // to get an idea of how the index page is being rendered
     });
+  
 })
 
 module.exports = router;

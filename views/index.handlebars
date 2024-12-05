@@ -1,11 +1,93 @@
-<h1 align="center">Welcome to SweetToGo</h1>
-<h2 align="center"><a href="/login">Login</a></h2>
-<h2 align="center"><a href="/listprod">Begin Shopping</a></h2>
-<h2 align="center"><a href="/listorder">Orders List</a></h2>
-<h2 align="center"><a href="/customer">Customer Info</a></h2>
-<h2 align="center"><a href="/admin">Admin</a></h2>
-<h2 align="center"><a href="/logout">Log out</a></h2>
 
-{{#if username}}
+
+<div class="menu-wrapper">
+    <div class="menu-title-box">
+    {{#if username}}
+    <h1 class="menu-title"> Hello, {{username}} </h1> 
+    {{else}}
+    <h1 class="menu-title">Dessert App!</h1>
+     {{/if}}
+    </div>
+    <div>
+        <ul class="menu">
+            <li><a href="/login">Login</a></li>
+            <li><a href="/listprod">Begin Shopping</a></li>
+            <li><a href="/listorder">List All Orders</a></li>
+            <li><a href="/customer">Customer Info</a></li>
+            <li><a href="/admin">Administrators</a></li>
+            <li><a href="/logout">Log out</a></li>
+        </ul>
+
+       
+
+    </div>
+    </div>
+
+ 
+
+    {{#if username}}
     <h3 align="center">Signed in as: {{username}}</h3>
-{{/if}}
+    {{/if}}
+
+
+    <style>
+        .menu-wrapper {
+            border: 2px solid #ccc;
+            /* Outline around the menu */
+            border-radius: 10px;
+            /* Rounded corners for the box */
+            padding: 10px;
+            /* Space inside the border */
+            margin-bottom: 20px;
+            /* Optional: Add space below the menu */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Optional: Add subtle shadow for depth */
+            background-color: #fff;
+            /* Background color of the menu box */
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            /* Centers the menu items horizontally */
+            list-style: none;
+            /* Removes the default list style */
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            margin: 0 15px;
+            /* Space between menu items */
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            /* Adjust the color of links */
+            font-weight: bold;
+            padding: 8px 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: #c89191;
+            /* Add hover effect */
+        }
+
+         .menu-title-box {
+            border: 10px solid #c89191;
+            /* Outline around the menu */
+            border-radius: 10px;
+            /* Rounded corners for the box */
+            padding: 10px;
+            /* Space inside the border */
+            margin-bottom: 20px;
+            /* Optional: Add space below the menu */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Optional: Add subtle shadow for depth */
+            background-color: #fff;
+            /* Background color of the menu box */
+        }
+
+    </style>

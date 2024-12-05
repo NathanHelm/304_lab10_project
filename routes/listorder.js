@@ -97,6 +97,7 @@ async function insertPreparedList(sqlInsert, inputObject)
         let ps = pool.request();
         for (let i = 0; i < inputObject.length; i++) {
             ps.input(inputObject[i].inputName, inputObject[i].inputType, inputObject[i].inputValue);
+           // ps.input()
         }
   
         let result = await ps.query(sqlInsert);
