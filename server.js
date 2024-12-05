@@ -3,6 +3,8 @@ const exphbs = require('express-handlebars');
 const session = require('express-session')
 const bodyParser  = require('body-parser');
 
+const PORT = process.env.PORT || 3050;
+
 let index = require('./routes/index');
 let loadData = require('./routes/loaddata');
 let listOrder = require('./routes/listorder');
@@ -87,4 +89,4 @@ app.use('/customer', customer);
 app.use('/ship', ship);
 
 // Starting our Express app
-app.listen(3000)
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

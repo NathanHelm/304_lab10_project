@@ -5,7 +5,7 @@
   "repository": "N/A",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -16,7 +16,8 @@
     "express-session": "^1.17.1",
     "moment": "^2.28.0",
     "mssql": "^6.2.1",
-    "nodemon": "^2.0.4",
-    "tedious": "^9.2.1"
+    "nodemon": "^2.0.12",
+    "tedious": "^9.2.1",
+    "uuid": "^8.3.2"
   }
 }

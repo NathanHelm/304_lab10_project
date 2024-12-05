@@ -27,9 +27,10 @@ const sql = require('mssql');
 
 
 router.post('/', async function(req, res, next) {
-    console.log("hello");
+    // console.log("hello");
+    // console.log("module exports" + module.exports);
 
-    console.log("module exports" + module.exports);
+
     // Get the product name to search fo
     let name = req.body.productName;
     console.log(name);
