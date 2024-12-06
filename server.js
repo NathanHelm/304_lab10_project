@@ -25,6 +25,9 @@ let removeProdShoppingCart = require('./routes/removeProdShoppingCart');
 
 const app = express();
 
+// Handlebar helper for creating custom helpers
+const hbs = exphbs.create({});
+
 // Enable parsing of requests for POST requests
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));

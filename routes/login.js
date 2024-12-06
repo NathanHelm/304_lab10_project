@@ -10,10 +10,14 @@ router.get('/', function(req, res, next) {
         req.session.loginMessage = false;
     }
 
+    if (!req.session.authenticatedUser) {
     res.render('login', {
-        title: "Login Screen",
+        title: "Login",
         loginMessage: loginMessage
     });
+} else {
+    res.redirect('/');
+}
 });
 
 module.exports = router;

@@ -1,6 +1,3 @@
-CREATE DATABASE orders;
-go
-
 USE orders;
 go
 
@@ -30,6 +27,7 @@ CREATE TABLE customer (
     country             VARCHAR(40),
     userid              VARCHAR(20),
     password            VARCHAR(30),
+    adminStatus         BIT DEFAULT 0
     PRIMARY KEY (customerId)
 );
 
@@ -157,6 +155,9 @@ INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (2,
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (3, 1, 45, 5.10);
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (4, 1, 100, 3.50);
 
+-- Account with admin access
+INSERT INTO customer (userid, password, adminStatus) VALUES ('bigboss', 'bestboss123', 1);
+-- Customer accounts
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES ('Arnold', 'Anderson', 'a.anderson@gmail.com', '204-111-2222', '103 AnyWhere Street', 'Winnipeg', 'MB', 'R3X 45T', 'Canada', 'arnold' , 'test');
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES ('Bobby', 'Brown', 'bobby.brown@hotmail.ca', '572-342-8911', '222 Bush Avenue', 'Boston', 'MA', '22222', 'United States', 'bobby' , 'bobby');
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES ('Candace', 'Cole', 'cole@charity.org', '333-444-5555', '333 Central Crescent', 'Chicago', 'IL', '33333', 'United States', 'candace' , 'password');
@@ -169,6 +170,7 @@ INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (1, '2019-1
 SELECT @orderId = @@IDENTITY
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 1, 1, 4.00)
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 4, 2, 7.00)
+GO
 
 -- Order 2
 DECLARE @orderId int
@@ -177,6 +179,7 @@ SELECT @orderId = @@IDENTITY
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 2, 5, 10.00);
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 4, 4, 14.00)
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 3, 1, 5.10)
+GO
 
 -- Order 3 cannot be shipped as do not have enough inventory for item 1
 DECLARE @orderId int
@@ -185,6 +188,7 @@ SELECT @orderId = @@IDENTITY
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 1, 20, 80.00);
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 2, 2, 10.20)
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 4, 36, 126.00);
+GO
 
 -- Order 4
 DECLARE @orderId int
@@ -192,7 +196,7 @@ INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (1, '2019-1
 SELECT @orderId = @@IDENTITY
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 2, 12, 24.00)
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 4, 2, 7.00)
-
+GO
 
 -- New SQL DDL for lab 8
 UPDATE Product SET productImageURL = 'img/1.jpg' WHERE ProductId = 1;
