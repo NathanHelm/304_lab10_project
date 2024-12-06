@@ -69,6 +69,10 @@ app.set('view engine', 'handlebars');
 // be served from.
 app.use(express.static('public'));
 
+app.get('/index', (req, res) => {
+  res.render('index')
+})
+
 // Setting up Express.js routes.
 // These present a "route" on the URL of the site.
 // Eg: http://127.0.0.1/loaddata

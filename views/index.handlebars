@@ -2,33 +2,23 @@
 
 <div class="menu-wrapper">
     <div class="menu-title-box">
-    {{#if username}}
-    <h1 class="menu-title"> Hello, {{username}} </h1> 
-    {{else}}
-    <h1 class="menu-title">Dessert App!</h1>
-     {{/if}}
+                <h1 class="menu-title">&emsp;SweetToGo &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
+                    Craving a treat? You deserve it. You can take it SweetToGo!</h1>
+                {{#if username}}
+                <h1 class="menu-title"> Hello, {{username}} </h1> 
+                {{/if}}
+            </div>
+        <div>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/listprod">Our Products</a></li>
+                <li><a href="/listorder">Orders</a></li>
+                <li><a href="/admin">Administrators</a></li>
+                <li><a href="/showcart">MyCart</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </div>
     </div>
-    <div>
-        <ul class="menu">
-            <li><a href="/login">Login</a></li>
-            <li><a href="/listprod">Begin Shopping</a></li>
-            <li><a href="/listorder">List All Orders</a></li>
-            <li><a href="/customer">Customer Info</a></li>
-            <li><a href="/admin">Administrators</a></li>
-            <li><a href="/logout">Log out</a></li>
-        </ul>
-
-       
-
-    </div>
-    </div>
-
- 
-
-    {{#if username}}
-    <h3 align="center">Signed in as: {{username}}</h3>
-    {{/if}}
-
 
     <style>
         .menu-wrapper {
@@ -38,11 +28,11 @@
             /* Rounded corners for the box */
             padding: 10px;
             /* Space inside the border */
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             /* Optional: Add space below the menu */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             /* Optional: Add subtle shadow for depth */
-            background-color: #fff;
+            background-color: #eac9c9;
             /* Background color of the menu box */
         }
 
@@ -63,7 +53,7 @@
 
         .menu a {
             text-decoration: none;
-            color: #333;
+            color: #333333;
             /* Adjust the color of links */
             font-weight: bold;
             padding: 8px 15px;
@@ -71,23 +61,56 @@
         }
 
         .menu a:hover {
-            background-color: #c89191;
+            background-color: #f9f1f1;
             /* Add hover effect */
         }
 
          .menu-title-box {
-            border: 10px solid #c89191;
+            border: 10px solid #d68383;
             /* Outline around the menu */
             border-radius: 10px;
             /* Rounded corners for the box */
-            padding: 10px;
+            padding: 12px;
             /* Space inside the border */
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             /* Optional: Add space below the menu */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             /* Optional: Add subtle shadow for depth */
-            background-color: #fff;
+            background-color: #e6b6b6;
             /* Background color of the menu box */
         }
 
+        .footer {
+            /* Positions Sign in status */
+            justify-content: center;
+            bottom: 0;
+            color: #854444;
+            font-weight: bolder;
+        }
+
+        .img-wrapper {
+            border: 2px solid #ccc;
+            /* Outline around the menu */
+            border-radius: 3px;
+            /* Rounded corners for the box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Optional: Add subtle shadow for depth */
+        }
+        
+
     </style>
+    
+
+</div>
+        <div class="img-wrapper">
+            <img src="img/main.jpg" alt="Cherry Pie" width="100%"/>
+        </div>
+        <div>
+     <ul class = "footer">
+        {{!-- {{#if username}} --}}
+            <h2>Signed in as: {{username}}</h2>
+        </div>
+        {{!-- {{/if}} --}}
+    </ul>
+    </div>
+</div>
