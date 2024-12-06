@@ -3,12 +3,14 @@ const router = express.Router();
 
 router.get('/', function(req, res, next) {
     let productList = false;
+
     res.setHeader('Content-Type', 'text/html');
     res.write("<title>Your Shopping Cart</title>");
+
     if (req.session.productList) {
         productList = req.session.productList;
         res.write("<h1>Your Shopping Cart</h1>");
-        res.write("<table><tr><th>Product Id</th><th>Product Name</th><th>Quantity</th>");
+        res.write("<table><tr><th>Product Id</th><th>Quantity</th>");
         res.write("<th>Price</th><th>Subtotal</th></tr>");
 
         let total = 0;
@@ -19,7 +21,7 @@ router.get('/', function(req, res, next) {
             }
 
             res.write("<tr><td>" + product.id + "</td>");
-            res.write("<td>" + product.name + "</td>");
+           // res.write("<td>" + product.name + "</td>");
 
             res.write("<td align=\"center\">" + product.quantity + "</td>");
 

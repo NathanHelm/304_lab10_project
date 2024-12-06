@@ -57,6 +57,7 @@ async function validateLogin(req) {
             {
                 console.log(result +" "+ result.customerId);
                 requsername = result.userid;
+                req.session.customerId = result.customerId;
                 return true;
             }
         } catch(err) {

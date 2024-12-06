@@ -15,9 +15,16 @@ router.post('/', function(req, res, next) {
        {
           if( productList[i] != null || productList[i] != undefined)
           {
-          if(productId != productList[i].id)
+          if(productId == productList[i].id)
           {
-            newProductList.push(productList[i]);
+            let quantity = productList[i].quantity;
+            quantity -= 1;
+            if(quantity >= 1)
+            {
+                productList[i].quantity = quantity;
+                newProductList.push(productList[i]);
+            }
+            //if quantity is <= 0, it will not be added to the shopping cart.
           }
           }
        }

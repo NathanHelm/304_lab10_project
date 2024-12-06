@@ -27,19 +27,39 @@ router.get('/', function(req, res, next) {
     }
 
     // Update quantity if add same item to order again
-    if (productList[id]){
-        productList[id].quantity = productList[id].quantity + 1;
-    } else {
-        productList[id] = {
+    if(productList.length == 0)
+    {
+        productList.push({
             "id": id,
             "name": name,
             "price": price,
             "quantity": 1
-        };
+           
+        });
+    }
+    else
+    {
+    for(let i = 0; i < productList.length; i++)
+    {
+    if (productList[i].id == id){
+        productList[i].quantity = productList[i].quantity + 1;
+        break;
+    } else {
+        productList.push({
+            "id": id,
+            "name": name,
+            "price": price,
+            "quantity": 1
+           
+        });
+        break;
+    }
+    }
     }
 
     req.session.productList = productList;
-    res.redirect("/showcart");
+    req.session.redirectionForSave = '/showcart';
+    res.redirect('/getCart/save');
 });
 
 module.exports = router;

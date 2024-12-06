@@ -13,6 +13,7 @@ const auth = {
             let loginMessage = "You have not been authorized to access the URL " + url;
             req.session.loginMessage = loginMessage;
             
+            
         }
     
         return authenticated;

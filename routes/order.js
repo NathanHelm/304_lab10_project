@@ -36,7 +36,7 @@ router.get('/', async function(req, res, next) {
    
     for(let i = 0; i < result.length; i++)
     {                                                                                                                                   //start here .... 
-    const insertOrderSql = "Insert into orders.dbo.ordersummary(orders.dbo.ordersummary.orderDate, orders.dbo.ordersummary.totalAmount, orders.dbo.ordersummary.shiptoAddress, orders.dbo.ordersummary.shiptoCity, orders.dbo.ordersummary.shiptoState, orders.dbo.ordersummary.shiptoPostalCode, orders.dbo.ordersummary.shiptoCountry, orders.dbo.ordersummary.customerId) OUTPUT INSERTED.orderId VALUES(@1, @2, @3, @4, @5, @6, @7, @8);";
+    const insertOrderSql = "update ordersummary(orderDate, totalAmount, shiptoAddress, shiptoCity, shiptoState, shiptoPostalCode, shiptoCountry, customerId) set (@1, @2, @3, @4, @5, @6, @7, @8) where ordersummary.orderId In (select ordersummary.* from ordersummary join incart on ordersummary.orderId = incart.orderId where customerId = @8);";
     
         const insertOrderResult = await listOrd.insertPreparedList(insertOrderSql, [{inputName : '1', inputType : sql.Date, inputValue: new Date()}, 
         {inputName : '2', inputType : sql.Int, inputValue : 0}, {inputName : '3', inputType : sql.NVarChar, inputValue : result[i].address},  {inputName : '4', inputType : sql.NVarChar, inputValue : result[i].city},  {inputName : '5', inputType : sql.NVarChar, inputValue : result[i].state},  {inputName : '6', inputType : sql.NVarChar, inputValue : result[i].postalCode},  {inputName : '7', inputType : sql.NVarChar, inputValue : result[i].city},  {inputName : '8', inputType : sql.Int, inputValue : result[i].customerId}] );
@@ -45,7 +45,10 @@ router.get('/', async function(req, res, next) {
   
 
     const insertOrderProductResultSql = "Insert Into orders.dbo.orderproduct Values (@1,@2,@3,@4)";
-    const odId = insertOrderResult[0][0].orderId;
+    
+    const getorderIdSql = " select incart.orderId from incart join ordersummary on incart.orderId = ordersummary.orderId where customerId = @custId;"
+    const getorderId = await listOrd.getPreparedList(getorderIdSql, {custId : customerId}, [{inputName : 'custId', inputType : sql.Int}]);
+    const odId = get[0][0].orderId;
     req.session.orderId = odId;
     for (let i = 0; i < productList.length; i++) {
         let product = productList[i];

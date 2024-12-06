@@ -111,6 +111,21 @@ async function insertPreparedList(sqlInsert, inputObject)
     }
 }
 
+async function insertList(sqlInsert)
+{
+    try {
+        let pool = await sql.connect(dbConfig); //get global connection
+        let ps = pool.request();
+        let result = await ps.query(sqlInsert);
+        pool.close();
+        return result.recordsets;
+    }
+    catch (error)
+    {
+        console.log(error);
+    }
+}
+
 async function getList(sqlString) {
     try {
         let pool = await sql.connect(dbConfig); //get global connection
@@ -121,6 +136,7 @@ async function getList(sqlString) {
         console.log(error);
     }
 }
+
 
 async function getPreparedList(sqlString, preparedListParameterObj, inputObject) {
     try {
@@ -149,5 +165,5 @@ async function getPreparedList(sqlString, preparedListParameterObj, inputObject)
 function getColumns(result) {
     return Object.keys(result[0].columns);
 }
-module.exports = {getPreparedList, getList, getColumns, insertPreparedList, router};
+module.exports = {getPreparedList, getList, getColumns, insertPreparedList, insertList,router};
 
