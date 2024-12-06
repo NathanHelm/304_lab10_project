@@ -6,7 +6,7 @@ const sql = require('mssql');
 
     router.use(express.urlencoded({ extended: true }));
 
-    router.get('/', function(req, res, next) {
+    router.get('/', function (req, res, next) {
         res.setHeader('Content-Type', 'text/html');
         res.send(`
             <html>
@@ -26,17 +26,14 @@ const sql = require('mssql');
     });
 
 
-router.post('/', async function(req, res, next) {
-    // console.log("hello");
-    // console.log("module exports" + module.exports);
-
-
+router.post('/', async function (req, res, next) {
     // Get the product name to search fo
-    let name = req.body.productName;
+    let name = req.body.productName || '';
     console.log(name);
    // name = 's'; //temporary change.
-    const word = '%' + name + '%';
-    const sqlString = "select prod.productId,prod.productName, prod.productPrice from orders.dbo.product as prod where prod.productName like @word;";
+    const word = `%${name}%`;
+
+    const sqlString = "SELECT prod.productId, prod.productName, prod.productPrice FROM orders.dbo.product AS prod WHERE prod.productName LIKE @word;";
     if(name == null && name == undefined)
     {
         res.write("please enter a valid search string");
