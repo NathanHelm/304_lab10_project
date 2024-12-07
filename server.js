@@ -12,6 +12,7 @@ let listProd = require('./routes/listprod');
 let addCart = require('./routes/addcart');
 let showCart = require('./routes/showcart');
 let checkout = require('./routes/checkout');
+let newAccount = require('./routes/newAccount');
 let order = require('./routes/order');
 let login = require('./routes/login');
 let validateLogin = require('./routes/validateLogin');
@@ -73,8 +74,21 @@ app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 
 app.get('/index', (req, res) => {
-  res.render('index')
-})
+  res.render('index');
+});
+
+app.get('/newAccount', (req, res) => {
+  res.render('newAccount');
+});
+
+app.get('/customer', (req, res) => {
+  res.render('customer');
+});
+
+app.get('/editAccount', (req, res) => {
+  res.render('editAccount');
+});
+
 
 // Setting up Express.js routes.
 // These present a "route" on the URL of the site.
@@ -96,6 +110,7 @@ app.use('/displayImage', displayImage.router);
 app.use('/customer', customer);
 app.use('/ship', ship);
 app.use('/removeProdShoppingCart', removeProdShoppingCart);
+app.use('/newAccount', newAccount);
 
 // Starting our Express app
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

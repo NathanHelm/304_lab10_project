@@ -9,13 +9,13 @@ router.post('/', function(req, res) {
     // to the database in the validateLogin function.
 
     (async () => {
-        let authenticatedUser = await validateLogin(req);
+        const authenticatedUser = await validateLogin(req);
         if (authenticatedUser) {
             req.session.loginMessage = "Login successful!";
             req.session.authenticatedUser = true;
-            req.session.username = requsername;
+            req.session.username = req.body.username;
             req.session.password = req.body.password;
-            res.redirect("/listprod");
+            res.redirect("/customer");
         } else {
             req.session.authenticatedUser = false;
             req.session.loginMessage = "Incorrect ussername or password :(";
@@ -30,14 +30,14 @@ async function validateLogin(req) {
         return false;
     }
 
-    let username = req.body.username;
-    let password = req.body.password;
-    let authenticatedUser =  await (async function() {      //async func waits for validation
+    const username = req.body.username;
+    const password = req.body.password;
+    const authenticatedUser =  await (async function() {      //async func waits for validation
         // Checks if username and password match a customer account. 
 	    // If so, set authenticatedUser to be the username.
         try {
             //IMPORTANT!! @userid and @userpw avoids sql injection attacks!!
-            let getCustomerSql = "select userid, password, customerId, adminStatus from customer where userid = @userid collate Latin1_General_CS and password = @userpw; collate Latin1_General_CS";
+            let getCustomerSql = "select userid, password, customerId, adminStatus from customer where userid = @userid collate Latin1_General_CS_AS and password = @userpw collate Latin1_General_CS_AS";
             //NOTE: collate specifies rules for comparing data
             //Latin1_General refers to english-based rules
             //CS ensures value is case-sensitive
@@ -51,12 +51,12 @@ async function validateLogin(req) {
             const customerValidationResultSet  = await ord.getPreparedList(getCustomerSql, {userid : username, userpw : password}, [{inputName : 'userid', inputType : sql.NVarChar}, {inputName : 'userpw', inputType : sql.NVarChar}]);
             
             //Empty customers database (no accounts have been created)
-            if (customerValidationResultSet[0].length == 0) {
+            if (customerValidationResultSet[0][0].length == 0) {
                 return false;
             }
 
             //Only checks index 0 since userid are unique and only one row will be returned if a match is found
-            let result = customerValidationResultSet[0][0];
+            const result = customerValidationResultSet[0][0];
             
             //Stores/saves user credentials and can be accessed later as long as user is signed in
             if (result != null && result.customerId != null) {
@@ -64,7 +64,7 @@ async function validateLogin(req) {
                 req.session.adminStatus = result.adminStatus;
                 return true;
             } else {
-                req.session.loginMessage = "Login info is invalid. You can do it, please try again"
+                req.session.loginMessage = "Login info is invalid. You can do it, please try again";
                 return false;
             }
 

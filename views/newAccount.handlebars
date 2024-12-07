@@ -1,0 +1,129 @@
+
+    <div class="background-img">            
+    <div class="form-container">
+        <h1>Create an Account</h1>
+        <div class="input-container">
+        <form name="newAccountForm" action="/newAccount" method=post>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;First Name</label><br>&ensp;
+                    <input id="firstName" name="firstName" type="text" value="{{form.firstName}}" maxlength=40 placeholder="Enter your first name" required>
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;Last Name</label><br>&ensp;
+                    <input id="lastName" name="lastName" type="text" value="{{form.lastName}}" maxlength=40 placeholder="Enter your last name" required>
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;Email</label><br>&ensp;
+                    <input id="email" name="email" type="email" value="{{form.email}}" maxlength=50 placeholder="example@gmail.com" required>
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;Phone Number</label><br>&ensp;
+                    <input id="phonenum" name="phonenum" type="tel" value="{{form.phonenum}}" maxlength=20 placeholder="eg. 123-456-7890" required>
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;Address</label><br>&ensp;
+                    <input id="address" name="address" type="text" value="{{form.address}}" maxlength=50 placeholder="eg. 1234 Sesame Str" required>
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;City</label><br>&ensp;
+                    <input id="city" name="city" type="text" value="{{form.city}}" maxlength=40 placeholder="City" required>
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;State</label><br>&ensp;
+                    <input id="state" name="state" type="text" value="{{form.state}}" maxlength=20 placeholder="State" required>
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;Postal Code</label><br>&ensp;
+                    <input id="postalCode" name="postalCode" type="text" value="{{form.postalCode}}" maxlength=20 placeholder="eg. V1V1V1" required>
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;Country</label><br>&ensp;
+                    <input id="country" name="country" type="text" value="{{form.country}}" maxlength=40 placeholder="Country" required>
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;Username</label><br>&ensp;
+                    <input id="username" name="username" type="text" value="{{form.userid}}" maxlength=20 placeholder="Enter your username" required>
+                </div>
+                <br>
+                <div class="form-group col-md-4">
+                    <label for="firstName">&emsp;Password</label><br>&ensp;
+                    <input id="password" name="password" type="text" value="{{form.password}}" maxlength=30 placeholder="Enter your password" required>
+                </div>
+                
+                <br>
+                <div class="form-group col-md-4">
+                    <button type="submit">Save</button>
+                </div>
+                </div>
+            </div>
+        </form>
+
+
+
+    <style>
+        .background-img {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            background: url("img/bg.jpg") no-repeat fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .form-container{
+            margin: auto;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f4d5d5;
+
+        }
+
+        .form-container h1 {
+            text-align: center;
+            color: #d68383;
+        }
+
+        .input-container {
+            margin:auto;
+            width: 500px;
+            clear: both;
+        }
+
+        .input-container label {
+            color:#dd7e9e;
+        }
+
+
+        .input-container input {
+            width: 50%;
+            height: 25px;
+            clear: both;
+        }
+
+        .input-container button {
+            padding: 10px;
+            margin-top: 5px;
+            margin-left: 200px;
+            width: 100px;
+            color: #ffffff;
+            background-color: #f779a3;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+
+        }
+
+    </style>
+

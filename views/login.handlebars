@@ -1,13 +1,44 @@
 <div style="margin:0 auto;text-align:center;display:inline">
 
-    <h3>Please Login to System</h3>
+    <h1 style="color: 	#efa4a4">
+            Welcome to <br />
+            <span style="color: #8cb1f3">SweetToGo</span>
+          </h1>
 
     {{#if loginMessage}}
         <p>{{loginMessage}}</p>
     {{/if}}
 
     <br>
-    <form name="MyForm" method=post action="/validateLogin">
+
+     <form name="UserForm" action="/validateLogin" method="POST">
+        <table style="display:inline">
+            <h1>Login</h1>
+                  </div>
+  
+                <!-- Username input -->
+                <div class="input-user">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                    <div class="error"></div>
+                </div>
+  
+                <!-- Password input -->
+                <div class="input-user">
+                    <label for="username">Password</label>
+                    <input type="password" name="password" id="password" required>
+                    <div class="error"></div>
+                </div>
+  
+  
+                <!-- Submit button -->
+                <button type="submit">
+                  Login
+                </button>
+
+              </form>
+              
+    {{!-- <form name="MyForm" method=post action="/validateLogin">
         <table style="display:inline">
             <tr>
                 <td>
@@ -28,6 +59,10 @@
         </table>
         <br />
         <input class="submit" type="submit" name="Submit2" value="Log In">
-    </form>
+    </form> --}}
+    {{!-- Link to create an account if user does not have one yet --}}
+        <div class="text-center">
+            <p>Don't have a sweet tooth yet? <a href="/createaccount">Join</a> for a sugar rush</p>
+        </div>
 
 </div>

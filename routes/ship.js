@@ -59,32 +59,6 @@ router.get('/', function (req, res, next) {
             
             }
 
-            
-          //previous quantity
-
-            // TODO: Start a transaction --> with my code, you are redirected to the shipment file AFTER customer made order in order.jsp. 
-            /*
-
-select prod.productId, orderproduct.quantity from orderproduct join product as prod on orderproduct.productId  = prod.productId where orderId = @ordId; -- get quantity
-
-
-select quantity from productinventory; -- get  quantity 
-
-
--- new quantity = quantity - orderproduct.quantity.
--- check if new qunantity >= 0 
-
-update productinventory set quantity = @newQuantity where productId = @prouctId;
-
-
-            */
-
-            // TODO: Retrieve all items in order with given id
-            // TODO: Create a new shipment record.
-            // TODO: For each item verify sufficient quantity available in warehouse 1.
-            // TODO: If any item does not have sufficient inventory, cancel transaction and rollback. Otherwise, update inventory for each item.
-
-
         } catch (err) {
             console.dir(err);
             res.write(err + "")
