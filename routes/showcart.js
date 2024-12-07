@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
         }
         res.write("<tr><td colspan=\"4\" align=\"right\"><b>Order Total</b></td><td align=\"right\">$" + total.toFixed(2) + "</td></tr>");
         res.write("</table>");
-
+        
         res.write("<h2><a href=\"checkout\">Check Out</a></h2>");
     } else{
         res.write("<h1>Your shopping cart is empty!</h1>");

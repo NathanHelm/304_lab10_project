@@ -58,8 +58,7 @@ router.get('/', function(req, res, next) {
     }
 
     req.session.productList = productList;
-    req.session.redirectionForSave = '/showcart';
-    res.redirect('/getCart/save');
+    res.redirect('/showcart')
 });
 
 module.exports = router;

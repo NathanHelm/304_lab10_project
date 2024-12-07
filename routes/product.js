@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
             let price = undefined;
             let name = undefined;
             let imageURL = undefined;
+            
             const sqlQuery = "select productPrice, productName from product where productId = @id;";
             let pool = await sql.connect(dbConfig);
             const query = await pool.request().input('id', sql.Int, id)
@@ -96,10 +97,17 @@ router.get('/', function(req, res, next) {
                                 <a href='addcart?id=${id}&name=${name}&price=${price}'> <i>Buy</i> </a>
                                 <a href='listprod'> <i>Continue shopping</i> </a>
                             </div>
-                        </div>
-                    </body>
-                </html>
+                       
+               
             `);
+            //takes you to the review page
+            res.write(`  <a href='comment?productId=${id}'> <i>Leave a comment or see comments</i> </a>
+                         </div>
+                    </body>
+
+                    </html>
+                
+                `);
 
             console.log(id);
 

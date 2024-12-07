@@ -31,6 +31,7 @@ router.post('/', function(req, res, next) {
     }
 
     req.session.productList = newProductList;
+
     res.redirect('/showcart');
 });
 module.exports = router;

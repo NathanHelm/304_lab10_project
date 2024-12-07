@@ -162,8 +162,31 @@ async function getPreparedList(sqlString, preparedListParameterObj, inputObject)
         console.log(error);
     }
 }
+
+
+async function getMultipleParamPreparedList(sqlString, inputObject){
+
+try {
+    let pool = await sql.connect(dbConfig); //get global connection
+    let request = new sql.Request();
+    for (let i = 0; i < inputObject.length; i++) {
+        request.input(inputObject[i].inputName, inputObject[i].inputType, inputObject[i].inputValue);
+    }
+
+    let result = await request.query(sqlString);
+    //await ps.unprepare();
+    pool.close();
+    return result.recordsets;
+}
+catch (error) {
+    console.log(error);
+}
+}
+
+
+
 function getColumns(result) {
     return Object.keys(result[0].columns);
 }
-module.exports = {getPreparedList, getList, getColumns, insertPreparedList, insertList,router};
+module.exports = {getPreparedList, getList, getColumns, insertPreparedList, insertList,router, getMultipleParamPreparedList};
 
